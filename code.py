@@ -1,10 +1,14 @@
 import random
 
 class Coin:
-    def __init__(self, rare=False, clean=True, heads=True):
+    def __init__(self, rare=False, clean=True, heads=True, **kwargs):
+        
+        for key, value in kwargs.items():
+            setattr(self, key, value)
+        
         self.is_rare = rare
         self.is_clean = clean
-        self.heads = choice
+        self.heads = heads
         
         if self.is_rare:
             self.value = self.original_value * 1.25
@@ -30,6 +34,16 @@ class Coin:
         choice = random.choice(heads_options)
         self.heads = choice
 
-class Pound:
+class Pound(Coin): # Pound inherits all the Coin methods!
+    def __init__(self):
+        data = {
+            'original_value': 1.00,
+            'clean_colour': 'gold',
+            'rusty_colour': 'greenish',
+            'num_edges': 1,
+            'diameter': 22.5,
+            'thickness': 3.15,
+            'mass': 9.5
+            }
+        super().__init__(**data)
 
-    
