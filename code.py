@@ -34,6 +34,12 @@ class Coin:
         choice = random.choice(heads_options)
         self.heads = choice
 
+    def __str__(self):
+        if self.original_value >= 1.00:
+            return '€{} coin'.format(int(self.original_value))
+        else:
+            return '{}p coin'.format(int(self.original_value * 100))
+
 class One_pence(Coin):
     def __init__(self):
         data = {
@@ -186,4 +192,5 @@ for coin in coins:
         coin.mass
         ]
 
-string = '{} - colour: {}, value: {}, diameter (mm): {}, thickness (mm): {}, number of edges: {}, mass (g): {}'.format(*arguments)
+    string = '{} - colour: {}, value: {}, diameter (mm): {}, thickness (mm): {}, number of edges: {}, mass (g): {}'.format(*arguments)
+    print(string)
